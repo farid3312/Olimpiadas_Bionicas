@@ -6,7 +6,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-sys.path.append("/home/immersivetech/proyectos/v2e/Practical-RIFE")
+sys.path.append("tu ruta aqui")
 try:
     # Tu archivo se llama RIFE_HDv3.py, no RIFE.py
     from model.RIFE_HDv3 import Model as RIFEModel
