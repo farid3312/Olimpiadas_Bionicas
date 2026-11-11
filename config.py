@@ -45,7 +45,7 @@ CYBER_COLORS = {
 
 @dataclass
 class SystemParams:
-    model_path: Path = Path("/home/immersivetech/proyectos/v2e/models/SpikeHarDseantV2E.pth")
+    model_path: Path = Path("")
     sensor_size: Tuple[int, int, int] = (128, 128, 2)  # ENTRADA DE DATOS: 128x128 (INTACTO)
     num_classes: int = 7
     sample_duration_ms: float = 1500.0
