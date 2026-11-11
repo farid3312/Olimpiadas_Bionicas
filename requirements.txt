@@ -1,0 +1,78 @@
+# ============================================================================
+# Spike-HAR++ Cyberpunk HUD — requirements.txt
+# Entorno de referencia: Python 3.10+, Ubuntu 22.04, CUDA 12.6
+# ============================================================================
+# Instalación rápida:
+#   pip install -r requirements.txt
+#
+# ⚠️  PyTorch con CUDA requiere --index-url especial (ver sección PYTORCH).
+# ⚠️  V2E se instala en MODO EDITABLE desde el repo local (ver sección V2E).
+# ============================================================================
+
+
+# -------------------- NÚCLEO NUMÉRICO / VISIÓN --------------------
+# Usadas directamente por el pipeline (numpy, cv2) o por v2e/RIFE (scipy, skimage)
+numpy==2.2.6
+opencv-python==5.0.0.93
+scipy==1.15.3
+scikit-image==0.25.2
+matplotlib==3.5.1
+pandas==2.3.3
+imageio==2.37.4
+tifffile==2025.5.10
+
+
+# -------------------- UTILIDADES / I/O --------------------
+# h5py y tqdm son dependencias de v2e para lectura/escritura de eventos
+h5py==3.16.0
+tqdm==4.70.0
+packaging==26.3
+typing_extensions==4.16.0
+python-dateutil==2.9.0
+pytz==2022.1
+dill==0.4.1
+fasteners==0.14.1
+fs==2.4.12
+
+
+# -------------------- PYTORCH (CUDA 12.6) --------------------
+# Instalar con índice especial (NO desde PyPI estándar):
+#   pip install torch==2.14.0+cu126 \
+#               torchvision==0.29.0+cu126 \
+#               torchaudio==2.11.0+cu126 \
+#               --index-url https://download.pytorch.org/whl/cu126
+torch==2.14.0+cu126
+torchvision==0.29.0+cu126
+torchaudio==2.11.0+cu126
+
+
+# -------------------- REDES NEURONALES PULSANTES --------------------
+snntorch==1.0.0
+spikingjelly==0.0.0.0.14
+
+
+# -------------------- EMULACIÓN NEUROMÓRFICA (V2E) --------------------
+# ⚠️  v2e está instalado en MODO EDITABLE desde el repo local:
+#       cd /home/immersivetech/proyectos/v2e
+#       pip install -e .
+#     (En un requirements.txt no se puede fijar la ruta editable,
+#      por eso se lista solo por nombre; reinstalar con -e .)
+v2e==1.5.1
+dv_processing==2.0.4        # procesamiento de cámaras de eventos (dep. de v2e)
+
+
+# ============================================================================
+# DEPENDENCIAS EXTERNAS (NO instalables con pip)
+# ============================================================================
+# 1) Practical-RIFE (interpolador de frames)
+#       git clone https://github.com/hzwer/Practical-RIFE
+#       # Colocar los pesos en: Practical-RIFE/train_log/flownet.pkl
+#
+# 2) diccionario_ninos.py
+#       Debe exponer: obtener_palabras() y obtener_preguntas()
+#       Ubicación actual en tu equipo:
+#         /home/immersivetech/proyectos/v2e/pruebainterpolacion/
+#
+# 3) Checkpoint del modelo SNN
+#       SpikeHarDseantV2E.pth  -> pasar con --ckpt
+# ============================================================================
